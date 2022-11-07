@@ -1,13 +1,13 @@
-import logo from './logo.svg';
+
 import './App.css';
-import Navbar from './components/Navbar/Navbar/Navbar';
-import Slider from './components/Navbar/Slider/Slider';
+import Routes from './Routes/Routes';
+
+
 
 function App() {
   return (
     <div className="App">
-      <Navbar></Navbar>
-      <Slider></Slider>
+     <Routes></Routes>
     </div>
   );
 }
