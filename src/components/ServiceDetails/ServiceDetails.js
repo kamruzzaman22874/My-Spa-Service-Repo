@@ -6,23 +6,21 @@ const ServiceDetails = () => {
     const { title, img, description, price } = serviceData;
     console.log(serviceData);
     return (
-			<div className='card card-side bg-base-200 h-[500px] my-5 shadow-xl hidden md:flex lg:m-2'>
+			<div className='card card-side bg-base-200 lg:h-[500px] my-5 shadow-xl block md:flex lg:m-2'>
 				<figure className=''>
-					<img className='w-full' src={img} alt='img' />
+					<img className='lg:w-full' src={img} alt='img' />
 				</figure>
 
-				<div className='card-body w-1/2'>
-					<h2 className='text-center text-xl py-6 font-bold italic'>{title}</h2>
-					<p className='text-justify'>
-						{description}
-					</p>
+				<div className='card-body lg:w-1/2 flex'>
+					<h2 className='text-center lg:text-xl lg:py-6  font-bold italic'>
+						{title}
+					</h2>
+					<p className='text-justify'>{description}</p>
 					<div className='card-actions  justify-between'>
-						<h2 className='bg-white shadow-lg rounded-lg py-3 px-2 font-bold text-xl'>
-							Service Charge : {price} /-
+						<h2 className='bg-white shadow-lg rounded-lg lg:py-3 py-3 px-2 font-bold text-xl'>
+							Charge : {price}/-
 						</h2>
-						{/* <Link to={`/service/${_id}`} className='btn bg-gay-400'>
-							See details
-						</Link> */}
+						<button className='btn'>Booking Now</button>
 					</div>
 				</div>
 			</div>

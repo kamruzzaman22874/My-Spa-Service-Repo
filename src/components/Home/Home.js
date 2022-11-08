@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import HomeLoaderData from '../HomeLoderData/HomeLoaderData';
-import Slider from '../Navbar/Slider/Slider';
+import Slider from '../Slider/Slider';
 
 const Home = () => {
         const [services, setServices] = useState([]);

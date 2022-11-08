@@ -1,9 +1,18 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import img from '../../../asset/spa-logo.jpg';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { AuthContext } from '../../../context/AuthProvider';
+
 
 
 const Navbar = () => {
+	const { user, logOut } = useContext(AuthContext);
+	
+		const handleLogOut = () => {
+			logOut()
+				.then(() => {})
+				.catch((error) => console.error(error));
+		};
     return (
 			<div className='navbar bg-gray-400'>
 				<div className='navbar-start'>
@@ -38,7 +47,9 @@ const Navbar = () => {
 					</div>
 					<div className='flex ml-5'>
 						<img className='w-[50px] rounded-full' src={img} alt='' />
-						<a className='btn btn-ghost normal-case lg:text-xl'>SPA SERVICE</a>
+						<Link to='/' className='btn btn-ghost normal-case lg:text-xl'>
+							SPA SERVICE
+						</Link>
 					</div>
 				</div>
 				<div className='navbar-center hidden lg:flex'>
@@ -52,7 +63,34 @@ const Navbar = () => {
 					</ul>
 				</div>
 				<div className='navbar-end'>
-					<a className='btn'>Login</a>
+					<div className='hidden lg:block'>
+						<span className='mr-2'></span>
+						<span className='py-10'>
+							{user ? (
+								<div className='mb-2 flex  gap-6'>
+									<div
+										className='tooltip flex items-center gap-5 tooltip-bottom tooltip-secondary'
+										data-tip={user.displayName}
+									>
+										<button>
+											<img
+												className='w-[50px]  rounded-full'
+												src={user.photoURL}
+												alt=''
+											/>
+										</button>
+									</div>
+									<button className='btn btn-warning' onClick={handleLogOut}>
+										logout
+									</button>
+								</div>
+							) : (
+								<Link to='/login'>
+									<button className='btn btn-primary'>Login</button>
+								</Link>
+							)}
+						</span>
+					</div>
 				</div>
 			</div>
 		);
