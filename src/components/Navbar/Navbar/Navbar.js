@@ -32,9 +32,6 @@ const Navbar = () => {
 								<Link to='/home'>Home</Link>
 							</li>
 							<li>
-								<Link to='/services'>Services</Link>
-							</li>
-							<li>
 								<Link>Blog</Link>
 							</li>
 						</ul>
@@ -50,15 +47,12 @@ const Navbar = () => {
 							<Link to='/home'>Home</Link>
 						</li>
 						<li>
-							<Link to='/services'>Services</Link>
-						</li>
-						<li>
 							<Link>Blog</Link>
 						</li>
 					</ul>
 				</div>
 				<div className='navbar-end'>
-					<a className='btn'>Get started</a>
+					<a className='btn'>Login</a>
 				</div>
 			</div>
 		);

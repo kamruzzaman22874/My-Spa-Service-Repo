@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-			<footer className='px-4 divide-y bg-gray-800 text-gray-600'>
+			<footer className='px-4 divide-y bg-gray-800 text-gray-600 mb-2 rounded'>
 				<div className='container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0'>
 					<div className='lg:w-1/3'>
 						<a
@@ -21,34 +21,59 @@ const Footer = () => {
 								</svg>
 							</div>
 							<span className='self-center text-2xl font-semibold'>
-								Brand name
+								SPA SERVICE
 							</span>
 						</a>
 					</div>
-					<div className='grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4'>
+					<div className='grid grid-cols-2  text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4'>
 						<div className='space-y-3'>
 							<h3 className='tracking-wide uppercase dark:text-gray-50'>
-								Product
+								 Our Services
 							</h3>
 							<ul className='space-y-1'>
 								<li>
 									<a rel='noopener noreferrer' href='#'>
-										Features
+										Body and Soul spa
 									</a>
 								</li>
 								<li>
 									<a rel='noopener noreferrer' href='#'>
-										Integrations
+										Queen of the day
 									</a>
 								</li>
 								<li>
 									<a rel='noopener noreferrer' href='#'>
-										Pricing
+										One Massage Away
 									</a>
 								</li>
 								<li>
 									<a rel='noopener noreferrer' href='#'>
-										FAQ
+										Free Mind spa
+									</a>
+								</li>
+								<li>
+									<a rel='noopener noreferrer' href='#'>
+										Inner Beauty spa
+									</a>
+								</li>
+								<li>
+									<a rel='noopener noreferrer' href='#'>
+										Purity
+									</a>
+								</li>
+								<li>
+									<a rel='noopener noreferrer' href='#'>
+										Cascade
+									</a>
+								</li>
+								<li>
+									<a rel='noopener noreferrer' href='#'>
+										Your glow day
+									</a>
+								</li>
+								<li>
+									<a rel='noopener noreferrer' href='#'>
+										Spa under a wildflower
 									</a>
 								</li>
 							</ul>
@@ -140,9 +165,6 @@ const Footer = () => {
 							</div>
 						</div>
 					</div>
-				</div>
-				<div className='py-6 text-sm text-center dark:text-gray-400'>
-					© 1968 Company Co. All rights reserved.
 				</div>
 			</footer>
 		);
