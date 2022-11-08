@@ -12,13 +12,11 @@ const ServiceDetails = () => {
 				</figure>
 
 				<div className='card-body lg:w-1/2 flex'>
-					<h2 className='text-center lg:text-xl lg:py-6  font-bold italic'>
-						{title}
-					</h2>
+					<h2 className='text-center lg:text-xl lg:py-6  font-bold italic'>{title}</h2>
 					<p className='text-justify'>{description}</p>
 					<div className='card-actions  justify-between'>
 						<h2 className='bg-white shadow-lg rounded-lg lg:py-3 py-3 px-2 font-bold text-xl'>
-							Charge : {price}/-
+							Charge:{price}/-
 						</h2>
 						<button className='btn'>Booking Now</button>
 					</div>

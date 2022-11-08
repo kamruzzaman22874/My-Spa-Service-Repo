@@ -47,7 +47,7 @@ const Navbar = () => {
 					</div>
 					<div className='flex ml-5'>
 						<img className='w-[50px] rounded-full' src={img} alt='' />
-						<Link to='/' className='btn btn-ghost normal-case lg:text-xl text-white'>
+						<Link to='/' className='btn btn-ghost hidden lg:block normal-case lg:text-xl text-white'>
 							SPA SERVICE
 						</Link>
 					</div>

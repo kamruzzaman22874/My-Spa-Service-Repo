@@ -16,10 +16,12 @@ const ServicesData = ({ service }) => {
 						{description.slice(0, 400) + '...'}
 					</p>
 					<div className='lg:card-actions flex  justify-between'>
-						<h2 className='bg-white shadow-lg rounded-lg lg:py-3 py-3  lg:px-2 font-bold lg:text-xl mr-2'>
-							 Charge : {price}/-
+						<h2 className='bg-white shadow-lg rounded-lg lg:py-3 py-3 px-2 lg:px-2 font-bold lg:text-xl mr-2'>
+							Charge:{price}/-
 						</h2>
-						<Link to={`/service/${_id}`} className='btn bg-gay-400'>See details</Link>
+						<Link to={`/service/${_id}`} className='btn bg-gay-400'>
+							See details
+						</Link>
 					</div>
 				</div>
 			</div>

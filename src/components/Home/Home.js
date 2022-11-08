@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Banner from '../Banner/Banner';
+import Casual from '../Banner/Casual';
 import HomeLoaderData from '../HomeLoderData/HomeLoaderData';
 import Slider from '../Slider/Slider';
 
@@ -25,7 +27,13 @@ const Home = () => {
 					<Link className='btn bg-gay-400' to='/services'>
 						See All
 					</Link>
-				</button>
+			</button>
+			<div>
+				<Banner></Banner>
+			</div>
+			<div>
+				<Casual></Casual>
+			</div>
 			</div>
 		);
 };
