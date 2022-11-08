@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Blog from '../components/Blog/Blog';
 import ErrorPage from '../components/ErrorPage/ErrorPage';
 import Home from '../components/Home/Home';
 import Service from '../components/Service/Service';
@@ -22,6 +23,10 @@ const Routes = () => {
 					{
 						path: '/home',
 						element: <Home></Home>,
+					},
+					{
+						path: '/blog',
+						element: <Blog></Blog>
 					},
 					{
 						path: '*',
