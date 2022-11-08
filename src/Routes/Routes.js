@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import AddService from '../components/AddService/AddService';
 import Blog from '../components/Blog/Blog';
 import ErrorPage from '../components/ErrorPage/ErrorPage';
 import Home from '../components/Home/Home';
@@ -27,6 +28,10 @@ const Routes = () => {
 					{
 						path: '/blog',
 						element: <Blog></Blog>
+					},
+					{
+						path: '/addservice',
+						element: <AddService></AddService>
 					},
 					{
 						path: '*',

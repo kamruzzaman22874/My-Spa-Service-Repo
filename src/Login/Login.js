@@ -3,17 +3,22 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 import { FcGoogle } from 'react-icons/fc';
 import { BsGithub } from 'react-icons/bs';
+import toast from 'react-hot-toast';
 
 
 
 const Login = () => {
 
 
-    const { userLogin, googleSignIn, githubSignUp } = useContext(AuthContext);
+    const { userLogin, googleSignIn, githubSignUp,loading } = useContext(AuthContext);
         const navigate = useNavigate();
 		const location = useLocation();
-		const from = location.state?.from?.pathname || '/';
-    
+	const from = location.state?.from?.pathname || '/';
+	
+    if (loading) {
+			return <progress className='progress progress-error w-56'></progress>;
+		}
+	
     const handleLogin = event => {
         event.preventDefault()
         const form = event.target;
@@ -23,9 +28,10 @@ const Login = () => {
         userLogin(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+				console.log(user);
                 navigate(`${from}`);
                 form.reset()
+				toast.success('Successfully toasted!');
             })
         .catch(err => console.error(err))
     }
@@ -35,6 +41,7 @@ const Login = () => {
 					const user = result.user;
 					console.log(user);
 					navigate(`${from}`);
+					toast.success('Successfully toasted!');
 				})
 				.catch((err) => console.error(err));
     };

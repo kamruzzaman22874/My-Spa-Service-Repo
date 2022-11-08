@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
 import Banner from '../Banner/Banner';
 import Casual from '../Banner/Casual';
 import HomeLoaderData from '../HomeLoderData/HomeLoaderData';
 import Slider from '../Slider/Slider';
 
 const Home = () => {
+	const {loading} = useContext(AuthContext)
         const [services, setServices] = useState([]);
 				useEffect(() => {
 					fetch('http://localhost:5000/service')
 						.then((res) => res.json())
 						.then((data) => setServices(data));
 				}, []);
+	if (loading) {
+		return <progress className='progress progress-error w-56'></progress>;
+	}
     return (
 			<div>
 				<Slider></Slider>

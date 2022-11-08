@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
 const Signup = () => {
-   const { userCreateSignup, userprofile } = useContext(AuthContext);
-
+   const { userCreateSignup, userprofile, loading } = useContext(AuthContext);
+if (loading) {
+	return <progress className='progress progress-error w-full'></progress>;
+}
     const handleCreateUser = event => {
         event.preventDefault()
         const form = event.target;

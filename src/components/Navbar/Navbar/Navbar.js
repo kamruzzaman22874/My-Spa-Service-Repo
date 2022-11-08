@@ -47,23 +47,40 @@ const Navbar = () => {
 					</div>
 					<div className='flex ml-5'>
 						<img className='w-[50px] rounded-full' src={img} alt='' />
-						<Link to='/' className='btn btn-ghost hidden lg:block normal-case lg:text-xl text-white'>
+						<Link
+							to='/'
+							className='btn btn-ghost hidden lg:block normal-case lg:text-xl text-white'
+						>
 							SPA SERVICE
 						</Link>
 					</div>
 				</div>
 				<div className='navbar-center hidden text-white font-bold text-xl lg:flex'>
-					<ul className='menu menu-horizontal p-0'>
-						<li>
-							<Link to='/home'>Home</Link>
-						</li>
-						<li>
-							<Link to='/services'>Services</Link>
-						</li>
-						<li>
-							<Link to='/blog'>Blog</Link>
-						</li>
-					</ul>
+					{user ? (
+						<ul className='menu menu-horizontal p-0'>
+							<li>
+								<Link to='/home'>Home</Link>
+							</li>
+							<li>
+								<Link to='/services'>Services</Link>
+							</li>
+							<li>
+								<Link to='/addservice'>Add Service</Link>
+							</li>
+							<li>
+								<Link to='/blog'>Blog</Link>
+							</li>
+						</ul>
+					) : (
+						<ul className='menu menu-horizontal p-0'>
+							<li>
+								<Link to='/home'>Home</Link>
+							</li>
+							<li>
+								<Link to='/blog'>Blog</Link>
+							</li>
+						</ul>
+					)}
 				</div>
 				<div className='navbar-end'>
 					<div className='lg:block'>
