@@ -30,7 +30,7 @@ const Routes = () => {
 						element: <Blog></Blog>
 					},
 					{
-						path: '/addservice',
+						path: '/addService',
 						element: <AddService></AddService>
 					},
 					{
