@@ -47,15 +47,18 @@ const Navbar = () => {
 					</div>
 					<div className='flex ml-5'>
 						<img className='w-[50px] rounded-full' src={img} alt='' />
-						<Link to='/' className='btn btn-ghost normal-case lg:text-xl'>
+						<Link to='/' className='btn btn-ghost normal-case lg:text-xl text-white'>
 							SPA SERVICE
 						</Link>
 					</div>
 				</div>
-				<div className='navbar-center hidden lg:flex'>
+				<div className='navbar-center hidden text-white font-bold text-xl lg:flex'>
 					<ul className='menu menu-horizontal p-0'>
 						<li>
 							<Link to='/home'>Home</Link>
+						</li>
+						<li>
+							<Link to='/services'>Services</Link>
 						</li>
 						<li>
 							<Link>Blog</Link>
@@ -63,7 +66,7 @@ const Navbar = () => {
 					</ul>
 				</div>
 				<div className='navbar-end'>
-					<div className='hidden lg:block'>
+					<div className='lg:block'>
 						<span className='mr-2'></span>
 						<span className='py-10'>
 							{user ? (

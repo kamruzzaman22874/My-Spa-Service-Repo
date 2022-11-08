@@ -1,13 +1,18 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
+import { FcGoogle } from 'react-icons/fc';
+import { BsGithub } from 'react-icons/bs';
 
 
 
 const Login = () => {
 
 
-    const { userLogin, googleSignIn } = useContext(AuthContext);
+    const { userLogin, googleSignIn, githubSignUp } = useContext(AuthContext);
+        const navigate = useNavigate();
+		const location = useLocation();
+		const from = location.state?.from?.pathname || '/';
     
     const handleLogin = event => {
         event.preventDefault()
@@ -19,17 +24,29 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(`${from}`);
                 form.reset()
             })
         .catch(err => console.error(err))
     }
     const handleGoogleSignIn = () => {
-        googleSignIn()
-            .then(result => {
-                const user = result.user;
-                console.log(user)
-        }).catch(err => console.error(err))
-    }
+			googleSignIn()
+				.then((result) => {
+					const user = result.user;
+					console.log(user);
+					navigate(`${from}`);
+				})
+				.catch((err) => console.error(err));
+    };
+    	const githubSignIn = () => {
+				githubSignUp()
+					.then((result) => {
+						const user = result.user;
+						console.log(user);
+						navigate(`${from}`);
+					})
+					.catch((error) => console.log(error));
+			};
 
    
     return (
@@ -79,10 +96,19 @@ const Login = () => {
 									Sign Up
 								</Link>
 							</p>
-                                <button onClick={handleGoogleSignIn} className='btn btn-warning'>Google</button>
-                                <button className='btn'>Google</button>
+							<button onClick={handleGoogleSignIn} className='btn btn-warning mb-2'>
+								<span className='text-2xl'>
+									<FcGoogle></FcGoogle>
+								</span>
+								<span className='px-2'>Google Sign In</span>
+							</button>
+							<button onClick={githubSignIn} className='btn btn-warning'>
+								<span className='text-2xl'>
+									<BsGithub></BsGithub>
+								</span>
+								<span className='px-2'>Github Sign In</span>
+							</button>
 						</div>
-                   
 					</form>
 				</div>
 			</div>

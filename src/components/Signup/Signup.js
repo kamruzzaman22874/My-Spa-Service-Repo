@@ -10,7 +10,7 @@ const Signup = () => {
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
-        const photoURL = form.photoURL.value;
+        const photoURL = form.profile.value;
         const password = form.password.value;
         console.log(email , password);
 
@@ -22,7 +22,7 @@ const Signup = () => {
                         form.reset()
 					})
             .catch((err) => console.error(err));
-        const updateUserDetails = (name, photoURL) => {
+        	const updateUserDetails = (name, photoURL) => {
 					userprofile(name, photoURL)
 						.then(() => {
 							console.log('Profile Updated');
@@ -69,7 +69,7 @@ const Signup = () => {
 								</label>
 								<input
 									type='text'
-									name='name'
+									name='profile'
 									placeholder='PhotoURL'
 									className='input input-bordered'
 								/>

@@ -1,9 +1,11 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import ErrorPage from '../components/ErrorPage/ErrorPage';
 import Home from '../components/Home/Home';
 import Service from '../components/Service/Service';
 import ServiceDetails from '../components/ServiceDetails/ServiceDetails';
 import Signup from '../components/Signup/Signup';
+import PrivateRoute from '../context/PrivateRoute/PrivateRoute';
 import Main from '../Leyout/Main';
 import Login from '../Login/Login';
 
@@ -22,16 +24,24 @@ const Routes = () => {
 						element: <Home></Home>,
 					},
 					{
+						path: '*',
+						element:<ErrorPage></ErrorPage>
+					},
+					{
 						path: '/services',
-						element: <Service></Service>
+						element: (
+							<PrivateRoute>
+								<Service></Service>
+							</PrivateRoute>
+						)
 					},
 					{
 						path: '/signup',
-						element : <Signup></Signup>
+						element: <Signup></Signup>,
 					},
 					{
 						path: '/login',
-						element: <Login></Login>
+						element: <Login></Login>,
 					},
 					{
 						path: '/service/:id',
