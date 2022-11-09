@@ -31,7 +31,7 @@ const Login = () => {
 				console.log(user);
                 navigate(`${from}`);
                 form.reset()
-				toast.success('Successfully toasted!');
+				toast.success('Successfully User Log In');
             })
         .catch(err => console.error(err))
     }
@@ -41,7 +41,7 @@ const Login = () => {
 					const user = result.user;
 					console.log(user);
 					navigate(`${from}`);
-					toast.success('Successfully toasted!');
+					toast.success('Successfully Google Sign Up!');
 				})
 				.catch((err) => console.error(err));
     };
@@ -51,6 +51,7 @@ const Login = () => {
 						const user = result.user;
 						console.log(user);
 						navigate(`${from}`);
+						toast.success('Successfully Github Sign Up!');
 					})
 					.catch((error) => console.log(error));
 			};

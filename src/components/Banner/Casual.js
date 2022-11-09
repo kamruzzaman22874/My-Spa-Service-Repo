@@ -23,7 +23,7 @@ const Casual = () => {
 									/>
 								</div>
 								<div className ='flex flex-col items-center text-center justify-center'>
-									<h2 className ='font-medium title-font mt-4 text-white text-lg'>
+									<h2 className ='font-medium title-font  text-white text-lg'>
 										Owner : Kamruzzaman
 									</h2>
 									<div className ='w-12 h-1 bg-indigo-500 rounded mt-2 mb-4'></div>
@@ -34,7 +34,7 @@ const Casual = () => {
 								</div>
 							</div>
 							<div className ='sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-800 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left'>
-								<p className ='leading-relaxed text-lg mb-4'>
+								<p className ='leading-relaxed text-lg  py-20'>
 									Away Spa is not new, but this treatment is. The Diamonds are
 									Forever treatment aims to cleanse your skin thoroughly with
 									pure diamond powder, promising a more radiant-looking
@@ -42,7 +42,7 @@ const Casual = () => {
 									body scrub followed by a 30-minute diamond body wrap and a
 									60-minute diamond oil massage.
 								</p>
-								<Link to='' className ='text-indigo-400 inline-flex items-center'>
+								<Link to='' className ='text-indigo-400 inline-flex items-center lg:ml-48'>
 									Learn More
 									<svg
 										fill='none'

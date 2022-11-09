@@ -3,7 +3,7 @@ import './Slider.css'
 
 const Slider = () => {
     return (
-			<div className='flex justify-center mt-5 mb-5'>
+			<div className='flex justify-center lg:mt-10 mt-5 lg:mb-10 mb-5'>
 				<div className='carousel lg:w-[50%] h-[400px] rounded-lg'>
 					<div id='slide1' className='carousel-item relative w-full'>
 						<img

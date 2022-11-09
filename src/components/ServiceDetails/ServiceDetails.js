@@ -26,7 +26,7 @@ const ServiceDetails = () => {
 						<h2 className='bg-white shadow-lg rounded-lg lg:py-3 py-3 px-2 font-bold text-xl'>
 							Charge:{price}/-
 						</h2>
-						<button className='btn'>Booking Now</button>
+						<button className='btn'>Review Now</button>
 					</div>
 				</div>
 			</div>

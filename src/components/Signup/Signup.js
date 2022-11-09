@@ -1,6 +1,7 @@
 import React, { useContext }  from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Signup = () => {
    const { userCreateSignup, userprofile, loading } = useContext(AuthContext);
@@ -20,7 +21,8 @@ if (loading) {
 					.then((result) => {
 						const user = result.user;
                         console.log(user);
-                        updateUserDetails(name, photoURL);
+						updateUserDetails(name, photoURL);
+						toast.success('Successfully SignUp!');
                         form.reset()
 					})
             .catch((err) => console.error(err));

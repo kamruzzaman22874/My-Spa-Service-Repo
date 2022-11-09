@@ -2,13 +2,15 @@ import React, {useContext} from 'react';
 import img from '../../../asset/spa-logo.jpg';
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../../context/AuthProvider';
+import toast from 'react-hot-toast';
 
 
 
 const Navbar = () => {
 	const { user, logOut } = useContext(AuthContext);
 	
-		const handleLogOut = () => {
+	const handleLogOut = () => {
+			toast.success('Successfully Logout!');
 			logOut()
 				.then(() => {})
 				.catch((error) => console.error(error));

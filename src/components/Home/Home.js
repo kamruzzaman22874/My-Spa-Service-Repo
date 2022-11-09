@@ -20,6 +20,9 @@ const Home = () => {
     return (
 			<div>
 				<Slider></Slider>
+				<h2 className='text-3xl font-bold italic mb-20 text-slate-800 animate-bounce'>
+					Choose Your Option
+				</h2>
 				<div className='grid gap-6 grid-cols-1 mx-10 my-5'>
 					{services.map((service) => (
 						<HomeLoaderData
@@ -32,13 +35,13 @@ const Home = () => {
 					<Link className='btn bg-gay-400' to='/services'>
 						See All
 					</Link>
-			</button>
-			<div>
-				<Banner></Banner>
-			</div>
-			<div>
-				<Casual></Casual>
-			</div>
+				</button>
+				<div>
+					<Banner></Banner>
+				</div>
+				<div>
+					<Casual></Casual>
+				</div>
 			</div>
 		);
 };

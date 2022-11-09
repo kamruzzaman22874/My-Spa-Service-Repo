@@ -50,10 +50,10 @@ const AddService = () => {
 							id=''
 						/>
 					</div>
-					<div className='group'>
+					<div className='group border-0'>
 						<p className='text-secondary text--2xl font-serif'>Title :</p>
 						<input
-							className='w-[300px] h-[30px] bg-gray-400 p-2'
+							className='w-[300px] h-[30px] bg-gray-400 p-2 '
 							onBlur={handleBlue}
 							type='text'
 							name='title'
@@ -83,7 +83,7 @@ const AddService = () => {
 							id=''
 						/>
 					</div>
-					<button className='btn btn-secondary my-5'>Add Services</button>
+					<button className='btn  my-5'>Add Services</button>
 				</form>
 			</div>
 		);
