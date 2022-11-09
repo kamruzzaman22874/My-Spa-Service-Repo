@@ -70,6 +70,9 @@ const Navbar = () => {
 								<Link to='/addservice'>Add Service</Link>
 							</li>
 							<li>
+								<Link to='/myreviews'>My Reviews</Link>
+							</li>
+							<li>
 								<Link to='/blog'>Blog</Link>
 							</li>
 						</ul>

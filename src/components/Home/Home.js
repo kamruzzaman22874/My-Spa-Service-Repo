@@ -18,7 +18,8 @@ const Home = () => {
 		return <progress className='progress progress-error w-56'></progress>;
 	}
     return (
-			<div>
+		<div>
+			{/* Slider added down the navbar */}
 				<Slider></Slider>
 				<h2 className='text-3xl font-bold italic mb-20 text-slate-800 animate-bounce'>
 					Choose Your Option

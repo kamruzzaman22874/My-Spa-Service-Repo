@@ -4,6 +4,8 @@ import { AuthContext } from '../../context/AuthProvider';
 import toast from 'react-hot-toast';
 
 const Signup = () => {
+	// user signup  , userProfile , loading came from authContext
+	
    const { userCreateSignup, userprofile, loading } = useContext(AuthContext);
 if (loading) {
 	return <progress className='progress progress-error w-full'></progress>;

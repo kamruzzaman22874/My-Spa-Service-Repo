@@ -110,12 +110,12 @@ const Login = () => {
 								</span>
 								<span className='px-2'>Google Sign In</span>
 							</button>
-							<button onClick={githubSignIn} className='btn btn-warning'>
+							{/* <button onClick={githubSignIn} className='btn btn-warning'>
 								<span className='text-2xl'>
 									<BsGithub></BsGithub>
 								</span>
 								<span className='px-2'>Github Sign In</span>
-							</button>
+							</button> */}
 						</div>
 					</form>
 				</div>

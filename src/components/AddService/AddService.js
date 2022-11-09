@@ -14,6 +14,8 @@ const AddService = () => {
 					e.preventDefault();
 					console.log(addservices);
 
+	// Post data send from client side to database				
+
 					fetch('http://localhost:5000/services', {
 						method: 'POST',
 						headers: {
@@ -47,6 +49,7 @@ const AddService = () => {
 							type='text'
 							name='img'
 							placeholder='URL'
+							required
 							id=''
 						/>
 					</div>
@@ -58,6 +61,7 @@ const AddService = () => {
 							type='text'
 							name='title'
 							placeholder='Title'
+							
 							id=''
 						/>
 					</div>

@@ -4,10 +4,11 @@ import AddService from '../components/AddService/AddService';
 import Blog from '../components/Blog/Blog';
 import ErrorPage from '../components/ErrorPage/ErrorPage';
 import Home from '../components/Home/Home';
+import MyReviews from '../components/MyReviews/MyReviews';
 import Service from '../components/Service/Service';
 import ServiceDetails from '../components/ServiceDetails/ServiceDetails';
 import Signup from '../components/Signup/Signup';
-import PrivateRoute from '../context/PrivateRoute/PrivateRoute';
+// import PrivateRoute from '../context/PrivateRoute/PrivateRoute';
 import Main from '../Leyout/Main';
 import Login from '../Login/Login';
 
@@ -30,8 +31,12 @@ const Routes = () => {
 						element: <Blog></Blog>
 					},
 					{
-						path: '/addService',
+						path: '/addservice',
 						element: <AddService></AddService>
+					},
+					{
+						path: '/myreviews',
+						element: <MyReviews></MyReviews>
 					},
 					{
 						path: '*',
@@ -40,9 +45,9 @@ const Routes = () => {
 					{
 						path: '/services',
 						element: (
-							<PrivateRoute>
+				
 								<Service></Service>
-							</PrivateRoute>
+							
 						)
 					},
 					{
