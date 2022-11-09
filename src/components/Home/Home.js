@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 import Banner from '../Banner/Banner';
 import Casual from '../Banner/Casual';
 import HomeLoaderData from '../HomeLoderData/HomeLoaderData';
 import Slider from '../Slider/Slider';
 
 const Home = () => {
+	useTitle('home');
 	const {loading} = useContext(AuthContext)
         const [services, setServices] = useState([]);
 				useEffect(() => {

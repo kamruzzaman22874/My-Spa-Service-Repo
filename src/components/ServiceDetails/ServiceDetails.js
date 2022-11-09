@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useParams, useContext, useState, useEffect  } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
@@ -7,29 +7,39 @@ import toast from 'react-hot-toast';
 
 const ServiceDetails = () => {
 	// serviceData api get from routes
-
+	// const {id} = useParams()
+	// const [filterData, setFilterData] = useState();
+	const [reviews, setReviews] = useState();
 	const serviceData = useLoaderData();
 	const {_id, title, img, description, price } = serviceData;
-	console.log(serviceData);
 	const {user,  loading } = useContext(AuthContext);
+
+	// serviceData._id
+	useEffect(() => {
+		fetch(`http://localhost:5000/reviews?email=${user?.email}`).then(res => res.json()).then(data => {
+			setReviews(data)});
+	}, [])
+	
+
 	if (loading) {
 		return <progress className='progress progress-error w-56'></progress>;
 	}
 
 	//! handleReview btn.....
+	
 	const handleReview = (e) => {
 		e.preventDefault();
 		const textarea = e.target.review.value;
-		console.log(textarea);
 
 		const newReview = {
+			serviceTitle: title,
+			serviceImg: img,
 			ServiceId: _id,
 			message: textarea,
 			image: user.photoURL,
 			name: user.displayName,
 			email: user.email,
 		};
-
 		fetch('http://localhost:5000/reviews', {
 			method: 'POST',
 			headers: {
@@ -39,7 +49,6 @@ const ServiceDetails = () => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				if (data.acknowledged) {
 					toast.success('You are successfully added your review !!');
 					e.target.reset();
@@ -111,6 +120,20 @@ const ServiceDetails = () => {
 						</div>
 					)}
 					<div className='review-section'></div>
+				</div>
+			</div>
+			<div>
+				<div className='card w-96 bg-base-100 shadow-xl image-full'>
+					<figure>
+						<img src='https://placeimg.com/400/225/arch' alt='Shoes' />
+					</figure>
+					<div className='card-body'>
+						<h2 className='card-title'>Shoes!</h2>
+						<p>If a dog chews shoes whose shoes does he choose?</p>
+						<div className='card-actions justify-end'>
+							<button className='btn btn-primary'>Buy Now</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

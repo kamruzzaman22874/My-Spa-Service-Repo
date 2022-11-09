@@ -3,11 +3,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 import { FcGoogle } from 'react-icons/fc';
 import toast from 'react-hot-toast';
-
+import useTitle from '../hooks/useTitle';
 
 
 const Login = () => {
-
+	useTitle('login');
 
     const { userLogin, googleSignIn, githubSignUp,loading } = useContext(AuthContext);
         const navigate = useNavigate();

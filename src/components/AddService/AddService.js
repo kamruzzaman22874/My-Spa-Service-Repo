@@ -3,16 +3,18 @@ import React from 'react';
 import { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../context/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 const AddService = () => {
+	useTitle('addService');
        const { loading } = useContext(AuthContext);
-				const [addservices, setAddservices] = useState({});
+				const [addServices, setAddServices] = useState({});
 				
 				if (loading) {
 					return <progress className='progress progress-error w-56'></progress>;
 				}
 				const handleSubmit = (e) => {
 					e.preventDefault();
-					console.log(addservices);
+					console.log(addServices);
 
 	// Post data send from client side to database				
 
@@ -21,7 +23,7 @@ const AddService = () => {
 						headers: {
 							'content-type': 'application/json',
 						},
-						body: JSON.stringify(addservices),
+						body: JSON.stringify(addServices),
 					})
 						.then((res) => res.json())
 						.then((data) => {
@@ -34,9 +36,9 @@ const AddService = () => {
 				const handleBlue = (e) => {
 					const fieldName = e.target.name;
 					const value = e.target.value;
-					const newServices = { ...addservices };
+					const newServices = { ...addServices };
 					newServices[fieldName] = value;
-					setAddservices(newServices);
+					setAddServices(newServices);
 				};
     return (
 			<div className='mt-10'>

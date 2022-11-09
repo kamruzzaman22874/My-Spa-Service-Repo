@@ -20,6 +20,9 @@ if (loading) {
         const photoURL = form.profile.value;
         const password = form.password.value;
 		console.log(email, password);
+
+		// verify accurate password
+
 		if (password.length < 6) {
 			setPasswordError('password should be at least 6 characters');
 			return;
@@ -35,6 +38,8 @@ if (loading) {
 		}
 		setPasswordError('');
 
+		// create user sign up
+
        userCreateSignup(email, password)
 					.then((result) => {
 						const user = result.user;
@@ -44,6 +49,9 @@ if (loading) {
                         form.reset()
 					})
             .catch((err) => console.error(err));
+
+	//create user profile
+		
         	const updateUserDetails = (name, photoURL) => {
 					userprofile(name, photoURL)
 						.then(() => {

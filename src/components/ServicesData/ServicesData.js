@@ -24,6 +24,7 @@ const ServicesData = ({ service }) => {
 						</Link>
 					</div>
 				</div>
+				
 			</div>
 		);
 };
