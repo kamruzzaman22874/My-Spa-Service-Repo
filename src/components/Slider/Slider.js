@@ -1,7 +1,12 @@
 import React from 'react';
 import './Slider.css'
 
+
+//Using carousel
+
 const Slider = () => {
+
+	
     return (
 			<div className='flex justify-center lg:mt-10 mt-5 lg:mb-10 mb-5'>
 				<div className='carousel lg:w-[50%] h-[400px] rounded-lg'>

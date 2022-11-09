@@ -4,7 +4,8 @@ import AddService from '../components/AddService/AddService';
 import Blog from '../components/Blog/Blog';
 import ErrorPage from '../components/ErrorPage/ErrorPage';
 import Home from '../components/Home/Home';
-import MyReviews from '../components/MyReviews/MyReviews';
+import MyReviews from '../components/ReviewSection/MyReviews/MyReviews';
+
 import Service from '../components/Service/Service';
 import ServiceDetails from '../components/ServiceDetails/ServiceDetails';
 import Signup from '../components/Signup/Signup';

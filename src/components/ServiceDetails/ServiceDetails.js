@@ -1,21 +1,55 @@
 import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import toast from 'react-hot-toast';
 
 const ServiceDetails = () => {
-	
-    const serviceData = useLoaderData()
-    const { title, img, description, price } = serviceData;
+	// serviceData api get from routes
+
+	const serviceData = useLoaderData();
+	const {_id, title, img, description, price } = serviceData;
 	console.log(serviceData);
-	const { loading } = useContext(AuthContext);
-	 if (loading) {
-			return <progress className='progress progress-error w-56'></progress>;
-		}
-	
-	
-    return (
+	const {user,  loading } = useContext(AuthContext);
+	if (loading) {
+		return <progress className='progress progress-error w-56'></progress>;
+	}
+
+	//! handleReview btn.....
+	const handleReview = (e) => {
+		e.preventDefault();
+		const textarea = e.target.review.value;
+		console.log(textarea);
+
+		const newReview = {
+			ServiceId: _id,
+			message: textarea,
+			image: user.photoURL,
+			name: user.displayName,
+			email: user.email,
+		};
+
+		fetch('http://localhost:5000/reviews', {
+			method: 'POST',
+			headers: {
+				'content-type': 'application/json',
+			},
+			body: JSON.stringify(newReview),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				if (data.acknowledged) {
+					toast.success('You are successfully added your review !!');
+					e.target.reset();
+				}
+			})
+			.catch((err) => console.error(err));
+	};
+
+	return (
+		<div>
 			<div className='card card-side bg-base-200 lg:h-[500px] my-5 shadow-xl block md:flex lg:m-2 lg:mt-3'>
 				<figure>
 					<PhotoProvider>
@@ -38,7 +72,49 @@ const ServiceDetails = () => {
 					</div>
 				</div>
 			</div>
-		);
+			<div className='review-section'>
+				<div>
+					{user ? (
+						<div>
+							<div className='flex m-5'>
+								<label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
+									<div className='w-[50px] rounded-full'>
+										<img src={user.photoURL} />
+									</div>
+								</label>
+								<div>
+									<h1 className='text-green-500 ml-3 text-2xl font-serif'>
+										{user.displayName}
+									</h1>
+								</div>
+							</div>
+							<div>
+								<form onSubmit={handleReview} className='flex'>
+									<textarea
+										className='text-gray-700 p-5'
+										name='review'
+										id=''
+										cols='30'
+										rows='3'
+										placeholder='Give Your Review'
+									></textarea>
+									<button className='btn btn-secondary ml-2'>Submit</button>
+								</form>
+							</div>
+						</div>
+					) : (
+						<div className='flex'>
+							<p className='mx-5'>To add a review Please</p>
+							<Link className='text-secondary hover:text-red-700' to='/login'>
+								Login
+							</Link>
+						</div>
+					)}
+					<div className='review-section'></div>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default ServiceDetails;

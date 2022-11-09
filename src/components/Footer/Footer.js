@@ -10,7 +10,9 @@ const Footer = () => {
 							SPA SERVICE
 						</Link>{' '}
 						<br />
-						<p className='py-2 text-slate-300'>Address : Uttara ,Dhaka</p>
+						<p className='py-2 mb-2 text-slate-300'>
+							Address : Uttara ,Dhaka <span className='lg:ml-5'>Phone :01914********</span>
+						</p>
 					</ul>
 					<div className='flex flex-col justify-center pt-6 lg:pt-0'>
 						<div className='flex justify-center space-x-4'>
