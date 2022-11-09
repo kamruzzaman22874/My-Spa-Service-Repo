@@ -1,4 +1,4 @@
-import React, { useContext }  from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import toast from 'react-hot-toast';
@@ -7,6 +7,8 @@ const Signup = () => {
 	// user signup  , userProfile , loading came from authContext
 	
    const { userCreateSignup, userprofile, loading } = useContext(AuthContext);
+	const [passwordError, setPasswordError] = useState('');
+	const [success, setSuccess] = useState(false);
 if (loading) {
 	return <progress className='progress progress-error w-full'></progress>;
 }
@@ -17,7 +19,21 @@ if (loading) {
         const email = form.email.value;
         const photoURL = form.profile.value;
         const password = form.password.value;
-        console.log(email , password);
+		console.log(email, password);
+		if (password.length < 6) {
+			setPasswordError('password should be at least 6 characters');
+			return;
+		}
+		if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
+			setPasswordError('Please provide at least two uppercase');
+			return;
+		}
+
+		if (!/(?=.*[!@#$&*])/.test(password)) {
+			setPasswordError('Please add at least one special character');
+			return;
+		}
+		setPasswordError('');
 
        userCreateSignup(email, password)
 					.then((result) => {
@@ -31,6 +47,8 @@ if (loading) {
         	const updateUserDetails = (name, photoURL) => {
 					userprofile(name, photoURL)
 						.then(() => {
+							setSuccess(true);
+							form.reset()
 							console.log('Profile Updated');
 						})
 						.catch((error) => {
@@ -45,7 +63,10 @@ if (loading) {
 					<div className='text-center lg:text-left'>
 						<h1 className='text-4xl font-bold italic'>Signup now</h1>
 					</div>
-					<form onSubmit={handleCreateUser} className='card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-300'>
+					<form
+						onSubmit={handleCreateUser}
+						className='card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-300'
+					>
 						<div className='card-body'>
 							<div className='form-control'>
 								<label className='label'>
@@ -95,13 +116,15 @@ if (loading) {
 										Forgot password?
 									</Link>
 								</label>
+								{passwordError}
+								{success}
 							</div>
 							<div className='form-control mt-2'>
 								<button className='btn btn-primary'>Sign Up</button>
 							</div>
 							<p>
 								Already have an account?
-								<Link className='underline' to='/login'>
+								<Link className='underline hover:text-pink-500' to='/login'>
 									Login
 								</Link>
 							</p>

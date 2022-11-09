@@ -114,13 +114,13 @@ const Navbar = () => {
 											/>
 										</button>
 									</div>
-									<button className='btn btn-warning' onClick={handleLogOut}>
+									<button className='btn' onClick={handleLogOut}>
 										logout
 									</button>
 								</div>
 							) : (
 								<Link to='/login'>
-									<button className='btn btn-primary'>Login</button>
+									<button className='btn'>Login</button>
 								</Link>
 							)}
 						</span>

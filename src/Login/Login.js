@@ -98,9 +98,9 @@ const Login = () => {
 								<button className='btn'>Login</button>
 							</div>
 							<p>
-								Please Sign Up!!
-								<Link className='underline' to='/signup'>
-									Sign Up
+								Please Sign Up!! 
+								<Link className='underline hover:text-pink-500' to='/signup'>
+									 Sign Up
 								</Link>
 							</p>
 							<button onClick={handleGoogleSignIn} className='btn btn-warning mb-2'>

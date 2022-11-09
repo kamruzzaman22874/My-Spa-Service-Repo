@@ -50,7 +50,7 @@ const ServiceDetails = () => {
 
 	return (
 		<div>
-			<div className='card card-side bg-base-200 lg:h-[500px] my-5 shadow-xl block md:flex lg:m-2 lg:mt-3'>
+			<div className='card card-side bg-base-200 lg:h-[500px] my-5  shadow-xl block md:flex lg:m-2 lg:mt-3'>
 				<figure>
 					<PhotoProvider>
 						<PhotoView src={img}>
@@ -72,14 +72,14 @@ const ServiceDetails = () => {
 					</div>
 				</div>
 			</div>
-			<div className='review-section'>
+			<div className='review-section lg:ml-96 mt-2'>
 				<div>
 					{user ? (
-						<div>
+						<div className='gap-2'>
 							<div className='flex m-5'>
 								<label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
-									<div className='w-[50px] rounded-full'>
-										<img src={user.photoURL} />
+									<div className='w-[50px] rounded-full mt-2'>
+										<img src={user.photoURL} alt='' />
 									</div>
 								</label>
 								<div>
@@ -98,7 +98,7 @@ const ServiceDetails = () => {
 										rows='3'
 										placeholder='Give Your Review'
 									></textarea>
-									<button className='btn btn-secondary ml-2'>Submit</button>
+									<button className='btn lg:ml-2 lg:mt-8 mt-8'>Submit</button>
 								</form>
 							</div>
 						</div>
