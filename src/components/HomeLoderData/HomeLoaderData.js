@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const HomeLoaderData = ({ service }) => {
+
+	// Distracturing main content from mongoDb 
+
     const {_id , title ,img ,  description , price} = service
     return (
 			<div className='card card-side bg-base-200 lg:h-[400px] shadow-xl md:flex block'>

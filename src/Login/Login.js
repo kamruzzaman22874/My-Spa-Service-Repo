@@ -9,7 +9,7 @@ import useTitle from '../hooks/useTitle';
 const Login = () => {
 	useTitle('login');
 
-    const { userLogin, googleSignIn, githubSignUp,loading } = useContext(AuthContext);
+    const { userLogin, googleSignIn, loading } = useContext(AuthContext);
         const navigate = useNavigate();
 		const location = useLocation();
 	const from = location.state?.from?.pathname || '/';
@@ -26,11 +26,36 @@ const Login = () => {
         console.log(email, password);
         userLogin(email, password)
             .then(result => {
-                const user = result.user;
-				console.log(user);
-                navigate(`${from}`);
-                form.reset()
-				toast.success('Successfully User Log In');
+				const user = result.user;
+				
+
+			if (user.email) {
+				const currentUser = {
+					email: user.email,
+				};
+				console.log(currentUser);
+
+				fetch('http://localhost:5000/jwt', {
+					method: 'POST',
+					headers: {
+						'content-type': 'application/json',
+
+					},
+					body: JSON.stringify(currentUser),
+				})
+					.then((res) => res.json())
+					.then((data) => {
+						console.log(data);
+						localStorage.setItem('spa-token', data.token);
+						navigate(from, { relative: true });
+					});
+			}
+
+			
+				
+                // navigate(`${from}`);
+                // form.reset()
+				// toast.success('Successfully User Log In');
             })
         .catch(err => console.error(err))
     }
@@ -43,19 +68,8 @@ const Login = () => {
 					toast.success('Successfully Google Sign Up!');
 				})
 				.catch((err) => console.error(err));
-    };
-    	const githubSignIn = () => {
-				githubSignUp()
-					.then((result) => {
-						const user = result.user;
-						console.log(user);
-						navigate(`${from}`);
-						toast.success('Successfully Github Sign Up!');
-					})
-					.catch((error) => console.log(error));
-			};
-
-   
+	};
+	
     return (
 			<div className='hero  bg-gray-300'>
 				<div className='hero-content flex-col'>

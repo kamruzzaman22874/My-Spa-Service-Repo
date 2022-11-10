@@ -1,5 +1,7 @@
 import React from 'react';
 
+//  Banner section
+
 const Banner = () => {
     return (
 			<section className ='text-gray-400 bg-gray-800 body-font'>

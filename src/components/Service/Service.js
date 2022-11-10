@@ -5,6 +5,9 @@ import ServicesData from '../ServicesData/ServicesData';
 const Service = () => {
     useTitle('service');
     const [services, setServices] = useState([])
+
+// Data fetch for services route
+
     useEffect(() => {
         fetch('http://localhost:5000/services')
 					.then((res) => res.json())

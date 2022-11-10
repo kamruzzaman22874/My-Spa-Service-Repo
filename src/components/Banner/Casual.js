@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Unique part down the banner section
+
 const Casual = () => {
     return (
 			<section className ='text-gray-400 bg-gray-900 body-font'>

@@ -9,6 +9,7 @@ import MyReviews from '../components/ReviewSection/MyReviews/MyReviews';
 import Service from '../components/Service/Service';
 import ServiceDetails from '../components/ServiceDetails/ServiceDetails';
 import Signup from '../components/Signup/Signup';
+import PrivateRoute from '../context/PrivateRoute/PrivateRoute';
 // import PrivateRoute from '../context/PrivateRoute/PrivateRoute';
 import Main from '../Leyout/Main';
 import Login from '../Login/Login';
@@ -29,27 +30,27 @@ const Routes = () => {
 					},
 					{
 						path: '/blog',
-						element: <Blog></Blog>
+						element: <Blog></Blog>,
 					},
 					{
 						path: '/addservice',
-						element: <AddService></AddService>
+						element: <AddService></AddService>,
 					},
 					{
 						path: '/myreviews',
-						element: <MyReviews></MyReviews>
+						element: (
+							<PrivateRoute>
+								<MyReviews></MyReviews>
+							</PrivateRoute>
+						),
 					},
 					{
 						path: '*',
-						element:<ErrorPage></ErrorPage>
+						element: <ErrorPage></ErrorPage>,
 					},
 					{
 						path: '/services',
-						element: (
-				
-								<Service></Service>
-							
-						)
+						element: <Service></Service>,
 					},
 					{
 						path: '/signup',

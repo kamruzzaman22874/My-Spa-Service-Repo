@@ -9,6 +9,9 @@ import Slider from '../Slider/Slider';
 
 const Home = () => {
 	useTitle('home');
+
+// use authText for loading service API
+
 	const {loading} = useContext(AuthContext)
         const [services, setServices] = useState([]);
 				useEffect(() => {
@@ -22,6 +25,7 @@ const Home = () => {
     return (
 		<div>
 			{/* Slider added down the navbar */}
+
 				<Slider></Slider>
 				<h2 className='text-3xl font-bold italic mb-20 text-slate-800 animate-bounce'>
 					Choose Your Option

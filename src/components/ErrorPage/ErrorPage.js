@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Error Page or 404 handling
+
 const ErrorPage = () => {
     return (
 			<section className='flex items-center h-full p-16 dark:bg-gray-900 dark:text-gray-100'>

@@ -33,7 +33,7 @@ const AddService = () => {
 							}
 						});
 				};
-				const handleBlue = (e) => {
+				const handleBlur = (e) => {
 					const fieldName = e.target.name;
 					const value = e.target.value;
 					const newServices = { ...addServices };
@@ -47,7 +47,7 @@ const AddService = () => {
 						<p className='text-secondary text--2xl font-serif'>Photo URL :</p>
 						<input
 							className='w-[300px] h-[30px] bg-gray-400  p-2'
-							onBlur={handleBlue}
+							onBlur={handleBlur}
 							type='text'
 							name='img'
 							placeholder='URL'
@@ -59,7 +59,7 @@ const AddService = () => {
 						<p className='text-secondary text--2xl font-serif'>Title :</p>
 						<input
 							className='w-[300px] h-[30px] bg-gray-400 p-2 '
-							onBlur={handleBlue}
+							onBlur={handleBlur}
 							type='text'
 							name='title'
 							placeholder='Title'
@@ -71,7 +71,7 @@ const AddService = () => {
 						<p className='text-secondary text--2xl font-serif'>Fee :</p>
 						<input
 							className='w-[300px] h-[30px] bg-gray-400  p-2'
-							onBlur={handleBlue}
+							onBlur={handleBlur}
 							type='number'
 							name='fee'
 							placeholder='Fee'
@@ -82,7 +82,7 @@ const AddService = () => {
 						<p className='text-secondary text--2xl font-serif'>Description :</p>
 						<input
 							className='w-[300px] h-[70px] bg-gray-400 p-2'
-							onBlur={handleBlue}
+							onBlur={handleBlur}
 							type='text'
 							name='description'
 							placeholder='Description'

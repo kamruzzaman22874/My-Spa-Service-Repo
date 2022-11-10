@@ -16,4 +16,9 @@
 * This is Home service and choose any place in inside dhaka city.
 * Used to the React , firebase, node.js , express and also mongoDb
 * Tailwind css , DaisyUi and Tailblock used to make a good looking for this website.
-* This website deploy the server site by the vercel.
+* Private routing system.
+* Social User Login.
+* React icons
+* Tailblock
+* MambaUi
+

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from '../../../context/AuthProvider';
 import toast from 'react-hot-toast';
 
+// Navbar section
+
 const Navbar = () => {
 
 	const { user, logOut } = useContext(AuthContext);

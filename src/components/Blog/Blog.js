@@ -1,6 +1,8 @@
 import React from 'react';
 import useTitle from '../../hooks/useTitle';
 
+// blog section : ans to then question
+
 const Blog = () => {
 	useTitle('blog');
     return (

@@ -5,14 +5,31 @@ import toast from 'react-hot-toast';
 import MyReviewsLoader from './MyReviewsLoader';
 const MyReviews = () => {
     useTitle('myreviews');
-	const { user } = useContext(AuthContext);
+	const { user , logOut} = useContext(AuthContext);
 	const [reviews, setReviews] = useState([])
-	
+	 
+	// useEffect uses by review API
+
 	useEffect(() => {
-		fetch(`http://localhost:5000/reviews?email=${user?.email}`)
-			.then((res) => res.json())
-			.then((data) => setReviews(data));
-	}, [user?.email]);
+		fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+			headers: {
+				authorization: `Bearer ${localStorage.getItem('spa-token')}`,
+			},
+		})
+			.then((res) => {
+				if (res.status === 401 || res.status === 403) {
+					return logOut()
+				}
+			  return res.json()
+			})
+			.then((data) => {
+				
+				setReviews(data)
+			});
+	}, [user?.email, logOut]);
+
+	// Review delete 
+
 		const handleDelete = id => {
 			const proceed = window.confirm(
 				'Are you sure , you want to delete this review?'
@@ -34,11 +51,34 @@ const MyReviews = () => {
 					});
 			}
 		};
+
+	// Dynamically data fetch for reviews
+	
+	const handleReviewUpdate = id => {
+		fetch(`http://localhost:5000/reviews/${id}`, {
+			method: 'PATCH',
+			headers: {
+				'content-type' : 'application/json'
+			},
+			body:JSON.stringify({status:'Updated'})
+		})
+			.then(res => res.json())
+			.then(data => {
+				console.log(data);
+				if (data.modifiedCount > 0) {
+					const remaining = reviews.filter(rev => rev._id !== id)
+					const approving = reviews.find(rev => rev._id === id)
+					approving.status = 'Edit'
+					const newReviews = [...remaining, approving]
+					setReviews(newReviews)
+				}
+		})
+	}
 	return (
 		<div className=''>
 			<h1>MyReviews : {reviews.length}</h1>
 			<div>
-				<h1 className='text-3xl font-medium title-font text-white mb-12 text-center'>
+				<h1 className='text-3xl font-medium title-font text-gray-400 mb-12 text-center'>
 					All Reviews For {user.displayName}
 				</h1>
 				{reviews.length === 0 ? (
@@ -49,8 +89,9 @@ const MyReviews = () => {
 					<div className='grid  grid-cols-1 md:grid-cols-2  lg:grid-cols-3 '>
 						{reviews.map((review) => (
 							<MyReviewsLoader
-							key={review._id}
-							handleDelete={handleDelete}
+								key={review._id}
+								handleDelete={handleDelete}
+								handleReviewUpdate={handleReviewUpdate}
 								review={review}
 							></MyReviewsLoader>
 						))}
