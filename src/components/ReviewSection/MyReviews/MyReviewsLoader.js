@@ -35,7 +35,7 @@ const MyReviewsLoader = ({ review, handleDelete, handleReviewUpdate }) => {
 
 									<div>
 										<button
-											onClick={()=>handleReviewUpdate(_id)}
+											onClick={()=>handleReviewUpdate(_id , email)}
 											className='bg-slate-400 hover:bg-gray-600 px-3 py-2 rounded-xl'
 										>
 											{status ? status : 'Edit'}

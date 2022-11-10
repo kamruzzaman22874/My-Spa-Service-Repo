@@ -7,6 +7,8 @@ const MyReviews = () => {
     useTitle('myreviews');
 	const { user , logOut} = useContext(AuthContext);
 	const [reviews, setReviews] = useState([])
+	const [updateReview, setUpdateReview] = useState(false)
+	const [updatedId, setUpdatedId] = useState({})
 	 
 	// useEffect uses by review API
 
@@ -46,6 +48,7 @@ const MyReviews = () => {
 							toast.success('Delete Successfully!');
 							const remaining = reviews.filter((rem) => rem._id !== id);
 							setReviews(remaining);
+
 							
 						}
 					});
@@ -54,30 +57,53 @@ const MyReviews = () => {
 
 	// Dynamically data fetch for reviews
 	
-	const handleReviewUpdate = id => {
-		fetch(`http://localhost:5000/reviews/${id}`, {
+	const handleReviewUpdate = (id , email) => {
+		setUpdateReview(!updateReview);
+		setUpdatedId({id , email})
+		// console.log(id ,email);
+
+
+
+		
+	}
+
+	const handlerUpdateReview = event => {
+		event.preventDefault();
+		const form = event.target;
+		const review = form.review.value;
+		form.reset()
+		console.log(review);
+		console.log(updatedId);
+		const reviewId = updatedId.id
+		const userEmail = updatedId.email;
+		setUpdateReview(!updateReview);
+
+		fetch(`http://localhost:5000/reviews?id=${reviewId}&email=${userEmail}`, {
 			method: 'PATCH',
 			headers: {
-				'content-type' : 'application/json'
+				'content-type': 'application/json',
+				authorization: `Bearer ${localStorage.getItem('spa-token')}`,
 			},
-			body:JSON.stringify({status:'Updated'})
+			body:JSON.stringify({status: review})
 		})
-			.then(res => res.json())
-			.then(data => {
-				console.log(data);
-				if (data.modifiedCount > 0) {
-					const remaining = reviews.filter(rev => rev._id !== id)
-					const approving = reviews.find(rev => rev._id === id)
-					approving.status = 'Edit'
-					const newReviews = [...remaining, approving]
-					setReviews(newReviews)
-				}
-		})
+				.then(res => res.json())
+				.then(data => {
+					console.log(data);
+
+					// if (data.modifiedCount > 0) {
+					// 	// const remaining = reviews.filter(rev => rev._id !== id)
+					// 	// const approving = reviews.find(rev => rev._id === id)
+					// 	approving.status = 'Edit'
+					// 	const newReviews = [...remaining, approving]
+					// 	setReviews(newReviews)
+					// }
+			})
 	}
+
 	return (
 		<div className=''>
 			<h1>MyReviews : {reviews.length}</h1>
-			<div>
+			<div className='relative'>
 				<h1 className='text-3xl font-medium title-font text-gray-400 mb-12 text-center'>
 					All Reviews For {user.displayName}
 				</h1>
@@ -97,6 +123,19 @@ const MyReviews = () => {
 						))}
 					</div>
 				)}
+			</div>
+			<div className={`${updateReview? 'absolute': 'hidden'} flex absolute top-1/2 left-1/2`}>
+				<form onSubmit={handlerUpdateReview}>
+					<textarea
+						className='text-gray-700 p-5'
+						name='review'
+						id=''
+						cols='30'
+						rows='3'
+						placeholder='Give Your Review'
+					></textarea>
+					<button type='submit' className='btn lg:ml-2 lg:mt-8 mt-8'>Submit</button>
+				</form>
 			</div>
 		</div>
 	);
