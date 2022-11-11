@@ -35,7 +35,7 @@ const MyReviewsLoader = ({ review, handleDelete, handleReviewUpdate }) => {
 
 									<div>
 										<button
-											onClick={()=>handleReviewUpdate(_id , email)}
+											onClick={() => handleReviewUpdate(_id, email)}
 											className='bg-slate-400 hover:bg-gray-600 px-3 py-2 rounded-xl'
 										>
 											{status ? status : 'Edit'}
@@ -48,8 +48,8 @@ const MyReviewsLoader = ({ review, handleDelete, handleReviewUpdate }) => {
 										</button>
 									</div>
 								</div>
-								<div className='img'>
-									<img src={serviceImg} alt='' />
+								<div className='img '>
+									<img className='h-[200px] w-full' src={serviceImg} alt='' />
 								</div>
 								<div className='title'>
 									<h1>{serviceTitle}</h1>

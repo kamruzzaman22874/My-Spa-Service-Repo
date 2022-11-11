@@ -9,26 +9,29 @@ const MyReviews = () => {
 	const [reviews, setReviews] = useState([])
 	const [updateReview, setUpdateReview] = useState(false)
 	const [updatedId, setUpdatedId] = useState({})
+
 	 
 	// useEffect uses by review API
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
-			headers: {
-				authorization: `Bearer ${localStorage.getItem('spa-token')}`,
-			},
-		})
+		fetch(
+			`http://localhost:5000/reviews?email=${user?.email}`,
+			{
+				headers: {
+					authorization: `Bearer ${localStorage.getItem('spa-token')}`,
+				},
+			}
+		)
 			.then((res) => {
 				if (res.status === 401 || res.status === 403) {
-					return logOut()
+					return logOut();
 				}
-			  return res.json()
+				return res.json();
 			})
 			.then((data) => {
-				
-				setReviews(data)
+				setReviews(data.reverse());
 			});
-	}, [user?.email, logOut]);
+	}, [user?.email, logOut ,updateReview]);
 
 	// Review delete 
 
@@ -38,9 +41,12 @@ const MyReviews = () => {
 			);
 
 			if (proceed) {
-				fetch(`http://localhost:5000/reviews/${id}`, {
-					method: 'DELETE',
-				})
+				fetch(
+					`http://localhost:5000/reviews/${id}`,
+					{
+						method: 'DELETE',
+					}
+				)
 					.then((res) => res.json())
 					.then((data) => {
 						console.log(data);
@@ -48,8 +54,6 @@ const MyReviews = () => {
 							toast.success('Delete Successfully!');
 							const remaining = reviews.filter((rem) => rem._id !== id);
 							setReviews(remaining);
-
-							
 						}
 					});
 			}
@@ -62,9 +66,6 @@ const MyReviews = () => {
 		setUpdatedId({id , email})
 		// console.log(id ,email);
 
-
-
-		
 	}
 
 	const handlerUpdateReview = event => {
@@ -78,26 +79,29 @@ const MyReviews = () => {
 		const userEmail = updatedId.email;
 		setUpdateReview(!updateReview);
 
-		fetch(`http://localhost:5000/reviews?id=${reviewId}&email=${userEmail}`, {
-			method: 'PATCH',
-			headers: {
-				'content-type': 'application/json',
-				authorization: `Bearer ${localStorage.getItem('spa-token')}`,
-			},
-			body:JSON.stringify({status: review})
-		})
-				.then(res => res.json())
-				.then(data => {
-					console.log(data);
+		fetch(
+			`http://localhost:5000/reviews?id=${reviewId}&email=${userEmail}`,
+			{
+				method: 'PUT',
+				headers: {
+					'content-type': 'application/json',
+					authorization: `Bearer ${localStorage.getItem('spa-token')}`,
+				},
+				body: JSON.stringify({ status: review }),
+			}
+		)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
 
-					// if (data.modifiedCount > 0) {
-					// 	// const remaining = reviews.filter(rev => rev._id !== id)
-					// 	// const approving = reviews.find(rev => rev._id === id)
-					// 	approving.status = 'Edit'
-					// 	const newReviews = [...remaining, approving]
-					// 	setReviews(newReviews)
-					// }
-			})
+				// if (data.modifiedCount > 0) {
+				// 	// const remaining = reviews.filter(rev => rev._id !== id)
+				// 	// const approving = reviews.find(rev => rev._id === id)
+				// 	approving.status = 'Edit'
+				// 	const newReviews = [...remaining, approving]
+				// 	setReviews(newReviews)
+				// }
+			});
 	}
 
 	return (
@@ -124,17 +128,23 @@ const MyReviews = () => {
 					</div>
 				)}
 			</div>
-			<div className={`${updateReview? 'absolute': 'hidden'} flex absolute top-1/2 left-1/2`}>
-				<form onSubmit={handlerUpdateReview}>
+			<div
+				className={`${
+					updateReview ? 'absolute' : 'hidden'
+				} flex absolute  top-1/2 left-1/2`}
+			>
+				<form onSubmit={handlerUpdateReview} className=''>
 					<textarea
-						className='text-gray-700 p-5'
+						className=' p-5 bg-slate-600 text-white'
 						name='review'
 						id=''
 						cols='30'
 						rows='3'
 						placeholder='Give Your Review'
 					></textarea>
-					<button type='submit' className='btn lg:ml-2 lg:mt-8 mt-8'>Submit</button>
+					<button type='submit' className='btn lg:ml-2 lg:mt-8 mt-8'>
+						Submit
+					</button>
 				</form>
 			</div>
 		</div>

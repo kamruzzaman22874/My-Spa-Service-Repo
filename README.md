@@ -2,7 +2,8 @@
 # Project Title: SPA SERVICE
 
 
-# Live Link: https://assignment10-authenticat-1b32f.web.app/home
+# Live Link: 
+# vercel link :http://localhost:5000
 
 
 # GitHub Link Client Site: https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-kamruzzaman22874

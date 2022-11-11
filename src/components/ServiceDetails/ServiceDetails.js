@@ -4,13 +4,14 @@ import { AuthContext } from '../../context/AuthProvider';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import toast from 'react-hot-toast';
-import ReviewByAllUserLoader from '../ReviewByAllUserLoader/ReviewByAllUserLoader';
+import ReviewByAllUser from '../ReviewByAllUser/ReviewByAllUser';
 
 const ServiceDetails = () => {
 	
 
 
 	const [getReviews, setGetReviews] = useState([{}, {}]);
+	// const [reviews , setReviews] = useState([])
 
 	
 	useEffect(() => {
@@ -27,17 +28,11 @@ const ServiceDetails = () => {
 	const serviceData = useLoaderData();
 	const {_id, title, img, description, price } = serviceData;
 	const {user,  loading } = useContext(AuthContext);
+	const [change, setChange] = useState(false);
 
-	// serviceData._id
-	// useEffect(() => {
-	// 	fetch(`http://localhost:5000/reviews?email=${user?.email}`).then(res => res.json()).then(data => {
-	// 		setReviews(data)});
-	// }, [])
 	
 
-	if (loading) {
-		return <progress className='progress progress-error w-56'></progress>;
-	}
+	
 
 	//! handleReview btn.....
 	
@@ -54,6 +49,7 @@ const ServiceDetails = () => {
 			name: user.displayName,
 			email: user.email,
 		};
+		// console.log(newReview.serviceImg);
 		fetch('http://localhost:5000/reviews', {
 			method: 'POST',
 			headers: {
@@ -64,12 +60,28 @@ const ServiceDetails = () => {
 			.then((res) => res.json())
 			.then((data) => {
 				if (data.acknowledged) {
+					// setReviews([newReview ,...reviews])
 					toast.success('You are successfully added your review !!');
+						setChange(!change);
 					e.target.reset();
 				}
 			})
 			.catch((err) => console.error(err));
 	};
+	// console.log(reviews);
+
+
+		useEffect(() => {
+			fetch(`https://localhost/5000/reviews/${_id}`)
+				.then((res) => res.json())
+				.then((data) => {
+					setGetReviews(data.reverse());
+				});
+		}, [_id, change]);
+	
+	if (loading) {
+		return <progress className='progress progress-error w-56'></progress>;
+	}
 
 
 	return (
@@ -135,9 +147,7 @@ const ServiceDetails = () => {
 						</div>
 					)}
 					<div className='review-section'>
-						<ReviewByAllUserLoader
-							getReviews={getReviews}
-						></ReviewByAllUserLoader>
+						<ReviewByAllUser getReviews={getReviews}></ReviewByAllUser>
 					</div>
 				</div>
 			</div>

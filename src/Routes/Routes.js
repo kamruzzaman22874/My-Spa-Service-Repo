@@ -64,7 +64,9 @@ const Routes = () => {
 						path: '/service/:id',
 						element: <ServiceDetails></ServiceDetails>,
 						loader: ({ params }) =>
-							fetch(`http://localhost:5000/service/${params.id}`),
+							fetch(
+								`http://localhost:5000/service/${params.id}`
+							),
 					},
 				],
 			},

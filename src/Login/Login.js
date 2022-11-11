@@ -39,7 +39,6 @@ const Login = () => {
 					method: 'POST',
 					headers: {
 						'content-type': 'application/json',
-
 					},
 					body: JSON.stringify(currentUser),
 				})
@@ -53,21 +52,48 @@ const Login = () => {
 
 			
 				
-                // navigate(`${from}`);
-                // form.reset()
-				// toast.success('Successfully User Log In');
+                navigate(`${from}`);
+                form.reset()
+				toast.success('Successfully User Log In');
             })
         .catch(err => console.error(err))
     }
     const handleGoogleSignIn = () => {
 			googleSignIn()
-				.then((result) => {
-					const user = result.user;
-					console.log(user);
-					navigate(`${from}`);
-					toast.success('Successfully Google Sign Up!');
+				.then((result) =>
+				{
+				const user = result.user;
+				
+
+			if (user.email) {
+				const currentUser = {
+					email: user.email,
+				};
+				console.log(currentUser);
+
+				fetch('http://localhost:5000/jwt', {
+					method: 'POST',
+					headers: {
+						'content-type': 'application/json',
+					},
+					body: JSON.stringify(currentUser),
 				})
-				.catch((err) => console.error(err));
+					.then((res) => res.json())
+					.then((data) => {
+						console.log(data);
+						localStorage.setItem('spa-token', data.token);
+						navigate(from, { relative: true });
+					});
+			}
+
+                navigate(`${from}`);
+				toast.success('Successfully User Log In');
+            })
+        .catch(err => console.error(err))
+				
+				
+				
+		
 	};
 	
     return (
