@@ -15,7 +15,7 @@ const ServiceDetails = () => {
 
 	
 	useEffect(() => {
-		fetch(`http://localhost:5000/reviews/${_id}`)
+		fetch(`https://assignment11-server-side2.vercel.app/reviews/${_id}`)
 			.then((res) => res.json())
 			.then((data) => {
 				setGetReviews(data.reverse());
@@ -57,7 +57,7 @@ const ServiceDetails = () => {
 			email: user.email,
 		};
 		// console.log(newReview.serviceImg);
-		fetch('http://localhost:5000/reviews', {
+		fetch('https://assignment11-server-side2.vercel.app/reviews', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json',

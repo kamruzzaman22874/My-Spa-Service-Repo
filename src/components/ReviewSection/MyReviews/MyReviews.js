@@ -15,7 +15,7 @@ const MyReviews = () => {
 
 	useEffect(() => {
 		fetch(
-			`http://localhost:5000/reviews?email=${user?.email}`,
+			`https://assignment11-server-side2.vercel.app/reviews?email=${user?.email}`,
 			{
 				headers: {
 					authorization: `Bearer ${localStorage.getItem('spa-token')}`,
@@ -42,7 +42,7 @@ const MyReviews = () => {
 
 			if (proceed) {
 				fetch(
-					`http://localhost:5000/reviews/${id}`,
+					`https://assignment11-server-side2.vercel.app/reviews/${id}`,
 					{
 						method: 'DELETE',
 					}
@@ -80,7 +80,7 @@ const MyReviews = () => {
 		setUpdateReview(!updateReview);
 
 		fetch(
-			`http://localhost:5000/reviews?id=${reviewId}&email=${userEmail}`,
+			`https://assignment11-server-side2.vercel.app/reviews?id=${reviewId}&email=${userEmail}`,
 			{
 				method: 'PUT',
 				headers: {

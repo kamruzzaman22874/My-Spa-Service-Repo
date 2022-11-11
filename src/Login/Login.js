@@ -36,7 +36,7 @@ const Login = () => {
 				};
 				console.log(currentUser);
 
-				fetch('http://localhost:5000/jwt', {
+				fetch('https://assignment11-server-side2.vercel.app/jwt', {
 					method: 'POST',
 					headers: {
 						'content-type': 'application/json',
@@ -69,7 +69,7 @@ const Login = () => {
 					email: user.email,
 				};
 
-				fetch('http://localhost:5000/jwt', {
+				fetch('https://assignment11-server-side2.vercel.app/jwt', {
 					method: 'POST',
 					headers: {
 						'content-type': 'application/json',

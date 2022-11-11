@@ -9,7 +9,7 @@ const Service = () => {
 // Data fetch for services route
 
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://assignment11-server-side2.vercel.app/services')
 					.then((res) => res.json())
 					.then((data) => setServices(data));
     },[])

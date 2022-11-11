@@ -15,7 +15,7 @@ const Home = () => {
 	const {loading} = useContext(AuthContext)
         const [services, setServices] = useState([]);
 				useEffect(() => {
-					fetch('http://localhost:5000/service')
+					fetch('https://assignment11-server-side2.vercel.app/service')
 						.then((res) => res.json())
 						.then((data) => setServices(data));
 				}, []);
