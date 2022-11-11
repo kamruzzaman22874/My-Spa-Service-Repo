@@ -12,7 +12,8 @@ const Login = () => {
     const { userLogin, googleSignIn, loading } = useContext(AuthContext);
         const navigate = useNavigate();
 		const location = useLocation();
-	const from = location.state?.from?.pathname || '/';
+		const path = location.state?.path?.pathname || '/';
+	
 	
     if (loading) {
 			return <progress className='progress progress-error w-56'></progress>;
@@ -46,13 +47,11 @@ const Login = () => {
 					.then((data) => {
 						console.log(data);
 						localStorage.setItem('spa-token', data.token);
-						navigate(from, { relative: true });
+						navigate(path, { relative: true });
 					});
 			}
 
-			
-				
-                navigate(`${from}`);
+                // navigate(`${path}`);
                 form.reset()
 				toast.success('Successfully User Log In');
             })
@@ -69,7 +68,6 @@ const Login = () => {
 				const currentUser = {
 					email: user.email,
 				};
-				console.log(currentUser);
 
 				fetch('http://localhost:5000/jwt', {
 					method: 'POST',
@@ -80,13 +78,12 @@ const Login = () => {
 				})
 					.then((res) => res.json())
 					.then((data) => {
-						console.log(data);
 						localStorage.setItem('spa-token', data.token);
-						navigate(from, { relative: true });
 					});
+					navigate(path, { relative: true });
 			}
 
-                navigate(`${from}`);
+                // navigate(`${from}`);
 				toast.success('Successfully User Log In');
             })
         .catch(err => console.error(err))

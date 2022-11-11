@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ServicesData = ({ service }) => {
-    console.log(service);
-    const {_id, img, title, description,price}=service
+	const { _id, img, title, description, fee } = service
+
     return (
 			<div className='card card-side bg-base-200 lg:h-[400px] my-5 shadow-xl md:flex block'>
 				<figure className='lg:w-1/2'>
@@ -17,7 +17,7 @@ const ServicesData = ({ service }) => {
 					</p>
 					<div className='lg:card-actions flex  justify-between'>
 						<h2 className='bg-white shadow-lg rounded-lg lg:py-3 py-3 px-2 lg:px-2 font-bold lg:text-xl mr-2'>
-							Charge:{price}/-
+							Charge:{fee}/-
 						</h2>
 						<Link to={`/service/${_id}`} className='btn bg-gay-400'>
 							See details

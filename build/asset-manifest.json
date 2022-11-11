@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.afa5f493.css",
-    "main.js": "/static/js/main.cca61fa4.js",
+    "main.css": "/static/css/main.5718724a.css",
+    "main.js": "/static/js/main.6a18b881.js",
     "static/js/787.07c6c224.chunk.js": "/static/js/787.07c6c224.chunk.js",
     "static/media/spa-logo.jpg": "/static/media/spa-logo.af0e5afedaa5fb71adeb.jpg",
     "index.html": "/index.html",
-    "main.afa5f493.css.map": "/static/css/main.afa5f493.css.map",
-    "main.cca61fa4.js.map": "/static/js/main.cca61fa4.js.map",
+    "main.5718724a.css.map": "/static/css/main.5718724a.css.map",
+    "main.6a18b881.js.map": "/static/js/main.6a18b881.js.map",
     "787.07c6c224.chunk.js.map": "/static/js/787.07c6c224.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.afa5f493.css",
-    "static/js/main.cca61fa4.js"
+    "static/css/main.5718724a.css",
+    "static/js/main.6a18b881.js"
   ]
 }

@@ -175,4 +175,4 @@
  * @license MIT
  */
 
-//! handleReview btn.....
+//! Handle Delete

@@ -10,8 +10,8 @@ const ServiceDetails = () => {
 	
 
 
-	const [getReviews, setGetReviews] = useState([{}, {}]);
-	// const [reviews , setReviews] = useState([])
+	const [getReviews, setGetReviews] = useState([]);
+	const [reviews , setReviews] = useState(false)
 
 	
 	useEffect(() => {
@@ -20,7 +20,14 @@ const ServiceDetails = () => {
 			.then((data) => {
 				setGetReviews(data.reverse());
 			});
-	}, []);
+	}, [getReviews]);
+
+	
+
+
+
+
+
 
 
 	// const [reviews, setReviews] = useState();
@@ -62,22 +69,25 @@ const ServiceDetails = () => {
 				if (data.acknowledged) {
 					// setReviews([newReview ,...reviews])
 					toast.success('You are successfully added your review !!');
-						setChange(!change);
+					setChange(!change);
+					setReviews(true);
 					e.target.reset();
 				}
 			})
 			.catch((err) => console.error(err));
+			setReviews(false)
+		
 	};
 	// console.log(reviews);
+// useEffect(() => {
+// 	fetch(`https://localhost/5000/reviews/${_id}`)
+// 		.then((res) => res.json())
+// 		.then((data) => {
+// 			setGetReviews(data.reverse());
+// 		});
+// }, [_id, change, reviews]);
 
-
-		useEffect(() => {
-			fetch(`https://localhost/5000/reviews/${_id}`)
-				.then((res) => res.json())
-				.then((data) => {
-					setGetReviews(data.reverse());
-				});
-		}, [_id, change]);
+	
 	
 	if (loading) {
 		return <progress className='progress progress-error w-56'></progress>;

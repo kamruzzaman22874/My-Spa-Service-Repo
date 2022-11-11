@@ -5,7 +5,7 @@ const HomeLoaderData = ({ service }) => {
 
 	// Distracturing main content from mongoDb 
 
-    const {_id , title ,img ,  description , price} = service
+    const {_id , title ,img ,  description , fee} = service
     return (
 			<div className='card card-side bg-base-200 lg:h-[400px] shadow-xl md:flex block'>
 				<figure className='lg:w-1/2'>
@@ -17,7 +17,7 @@ const HomeLoaderData = ({ service }) => {
 					<p className='text-justify lg:py-20'>{description.slice(0, 100) + '...'}</p>
 					<div className='lg:card-actions  justify-between lg:flex flex'>
 						<h2 className='bg-white shadow-lg rounded-lg lg:py-3 lg:px-3 py-3 px-3 font-bold text-sm'>
-							Charge:{price}/-
+							Charge:{fee}/-
 						</h2>
 						<Link to='/services' className='btn bg-gay-400'>Details</Link>
 					</div>

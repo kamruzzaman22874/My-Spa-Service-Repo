@@ -34,7 +34,11 @@ const Routes = () => {
 					},
 					{
 						path: '/addservice',
-						element: <AddService></AddService>,
+						element: (
+							<PrivateRoute>
+								<AddService></AddService>
+							</PrivateRoute>
+						),
 					},
 					{
 						path: '/myreviews',
@@ -64,9 +68,7 @@ const Routes = () => {
 						path: '/service/:id',
 						element: <ServiceDetails></ServiceDetails>,
 						loader: ({ params }) =>
-							fetch(
-								`http://localhost:5000/service/${params.id}`
-							),
+							fetch(`http://localhost:5000/service/${params.id}`),
 					},
 				],
 			},

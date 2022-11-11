@@ -8,7 +8,7 @@ const MyReviewsLoader = ({ review, handleDelete, handleReviewUpdate }) => {
 	const {
 		_id,
 		message,
-		ServiceId,
+		// ServiceId,
 		img,
 		name,
 		email,
